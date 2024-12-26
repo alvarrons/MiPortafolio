@@ -1,0 +1,79 @@
+---
+import Java from '../icons/Java.astro';
+import CS from '../icons/CS.astro';
+import Go from '../icons/Go.astro';
+import NextJS from '../icons/NextJS.astro';
+import MySQL from '../icons/MySQL.astro';
+import PostgreSQL from '../icons/Postgre.astro';
+
+const TAGS = {
+    JAVA: {
+        name: 'Java',
+        color:'bg-red-900 text-white',
+        icon: Java,
+    },
+    CS: {
+        name: 'C#',
+        color: 'bg-indigo-600 text-white',
+        icon: CS,
+    },
+    GO: {
+        name: 'Go',
+        color: 'bg-blue-600 text-white',
+        icon: Go,
+    },
+    NEXTJS: {
+        name: 'Next.js',
+        color: 'bg-black text-white',
+        icon: NextJS,
+    },
+    MYSQL: {
+        name: 'MySQL',
+        color: 'bg-stone text-white',
+        icon: MySQL,
+    },
+    POSTGRE: {
+        name: 'PostgreSQL',
+        color: 'bg-blue-800 text-white',
+        icon: PostgreSQL,
+    },
+}
+
+const PROJECTS = [
+    {
+  title: 'HogarFix - Plataforma para conectar servicios técnicos confiables',
+  description: 'Plataforma innovadora para conectar usuarios con técnicos calificados en plomería, electricidad, carpintería, pintura, y más. Ofrece un entorno seguro con un sistema de validación basado en calificaciones y reseñas de trabajos previos.',
+  link: '#',
+  github: 'https://github.com/StylezZz/HogarFixV2',
+  image: '/projects/HFix_photo.webp',
+  tags: [TAGS.JAVA, TAGS.CS, TAGS.MYSQL]
+    },
+    {
+  title: 'Matricula XP - Sistema de gestión de matricula para universidades',
+  description: 'Plataforma personalizada para la gestión de matrículas de estudiantes en la Facultad de Ingeniería Informática con más de 5,000 alumnos. Facilita procesos como la prematrícula, registro de notas (cualitativas y cuantitativas) y gestión de competencias.',
+  link: '#',
+  github: '',
+  image: '/projects/MatriSoftGo.webp',
+  tags: [TAGS.GO, TAGS.NEXTJS, TAGS.POSTGRE]
+    }
+]
+---
+{
+PROJECTS.map(({image, title, description, tags}) => (
+    <article>
+        <h3 class="text-2xl font-semibold text-white-200 mb-2">{title}</h3>
+        <p class="text-base mb-4 text-pretty opacity-70">{description}</p>
+        <ul class="flex gap-x-4 flex-row mb-2">
+            {tags.map(tag => (
+                <li>
+                    <span class={`flex gap-x-2 rounded-full text-xs ${tag.color} py-1 px-2 mb-2`}>
+                    <tag.icon class="size-4"/>
+                    {tag.name}
+                    </span>
+                </li>
+            ))}
+        </ul>
+        <img class="rounded shadow-2xl shadow-white/10 mb-12" src={image} alt={`Captura de pantalla del proyecto ${image}`} />
+    </article>
+))
+}

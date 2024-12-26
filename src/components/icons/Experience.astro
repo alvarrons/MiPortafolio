@@ -1,0 +1,27 @@
+---
+import ExperienceItem from './ExperienceItem.astro';
+
+const EXPERIENCE = [
+    {
+        date: "Actualmente...",
+        title: "Coordinador de Estrategias de Reclutamiento - Pásalo Academias",
+        description: "Lidero un proyecto de transformación digital implementando y desarrollando una página web accesible y centrada en el usuario. Diseñé campañas de marketing digital en redes sociales, logrando incrementar la visibilidad de la academia en un 40% y mejorando la interacción con los estudiantes interesados."
+    },
+    {
+        date: "Setiembre 2024",
+        title: "Integrante del Área de Relaciones Públicas - Infosoft PUCP",
+        description: "Responsable de la gestión y recepción de información de las ponencias y de los asistentes vía formularios, facilitando una comunicación clara y estructurada entre los organizadores y los asistentes."
+
+    }
+];
+---
+
+<ol class="relative border-s border-gray-200 ml-3">   
+    {
+        EXPERIENCE.map(experience => (
+            <li class="mb-10 ms-4">
+                <ExperienceItem {...experience} />
+            </li>
+        ))
+    }  
+</ol>

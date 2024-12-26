@@ -1,50 +1,65 @@
 ---
 interface Props {
 	title: string;
-}
+	description: string;
+}	
 
-const { title } = Astro.props;
+const { description, title } = Astro.props;
+
+import '@fontsource-variable/onest';
+import Header from '../components/Header.astro';
+import Footer from '../components/icons/Footer.astro';
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
+		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
 	<body>
+		<div class="background"></div>
+		<Header />
 		<slot />
+		<Footer />
 	</body>
 </html>
 <style is:global>
 	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
+		color-scheme: dark;
 	}
+	
 	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
+		font-family: "Onest Variable", system-ui, sans-serif;
+		scroll-behavior: smooth;
 	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
+	
+	body {
+		margin: 0;
+		padding: 0;
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+	}
+
+	/* Ajustar el fondo del div principal */
+	.background {
+		position: fixed; /* Fijo para que se mantenga al fondo */
+		inset: 0; /* Cubre toda la pantalla */
+		z-index: -1; /* Envía al fondo */
+		background: radial-gradient(125% 125% at 50% 10%, #000 40%, #63e 100%);
+		background-repeat: repeat-y; /* Se repite verticalmente */
+		background-size: 100% auto; /* Cubre el ancho y repite en la altura */
+		min-height: 100vh; /* Mínimo de altura completa */
+	}
+	
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
 	}
 </style>
