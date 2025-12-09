@@ -5,6 +5,7 @@ import Go from '../icons/Go.astro';
 import NextJS from '../icons/NextJS.astro';
 import MySQL from '../icons/MySQL.astro';
 import PostgreSQL from '../icons/Postgre.astro';
+import Redis from '../icons/Redis.astro';
 
 const TAGS = {
     JAVA: {
@@ -37,6 +38,11 @@ const TAGS = {
         color: 'bg-blue-800 text-white',
         icon: PostgreSQL,
     },
+    REDIS: {
+        name: 'Redis',
+        color: 'bg-red-500 text-white',
+        icon: Redis,
+    }
 }
 
 const PROJECTS = [
@@ -50,20 +56,37 @@ const PROJECTS = [
     },
     {
   title: 'MatriSoftGo - Sistema de gestión de matricula para universidades',
-  description: 'Plataforma personalizada para la gestión de matrículas de estudiantes en la Facultad de Ingeniería Informática con más de 5,000 alumnos. Facilita procesos como la prematrícula, registro de notas (cualitativas y cuantitativas) y gestión de competencias.',
+  description: 'Plataforma personalizada para la gestión de matrículas de estudiantes en la Facultad de Ingeniería Informática con más de 5,000 alumnos. Facilita procesos como la prematrícula, registro de notas y gestión de competencias.',
   link: '#',
   github: '',
   image: '/projects/MatriSoftGo.webp',
   tags: [TAGS.GO, TAGS.NEXTJS, TAGS.POSTGRE]
+    },
+    {
+  title: 'PLG – Simulación y optimización de rutas logísticas',
+  description: 'Plataforma para gestionar y simular operaciones de distribución. Facilita el registro de pedidos en tiempo real, la importación y edición de órdenes mediante archivos, así como el control del mantenimiento de la flota y de bloqueos en las rutas. Incorpora un algoritmo de planificación con Ant Colony Optimization (ACO) para generar rutas óptimas.',
+  link: '#',
+  github: 'https://github.com/StylezZz/HogarFixV2',
+  image: '/projects/PLG.webp',
+  tags: [TAGS.JAVA, TAGS.NEXTJS, TAGS.POSTGRE, TAGS.REDIS]
+    },
+    {
+  title: 'Smart Hotel - Website, Motor de Reservas y Chatbot con IA',
+  description: 'Plataforma que integra website con vistas 360° y chatbot con IA, un motor de reservas con flujo completo, un módulo de social selling con análisis de sentimiento en redes sociales y un CRM centralizado de leads y huéspedes.',
+  link: '#',
+  github: '',
+  image: '/projects/smart2.webp',
+  tags: [TAGS.GO, TAGS.NEXTJS, TAGS.POSTGRE]
     }
 ]
 ---
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 {
 PROJECTS.map(({image, title, description, tags}) => (
-    <article>
-        <h3 class="text-2xl font-semibold text-white-200 mb-2">{title}</h3>
-        <p class="text-base mb-4 text-pretty opacity-70">{description}</p>
-        <ul class="flex gap-x-4 flex-row mb-2">
+    <article class="flex flex-col">
+        <h3 class="text-xl font-semibold text-white-200 mb-2">{title}</h3>
+        <p class="text-sm mb-4 text-pretty opacity-70">{description}</p>
+        <ul class="flex gap-x-2 flex-row mb-4 flex-wrap">
             {tags.map(tag => (
                 <li>
                     <span class={`flex gap-x-2 rounded-full text-xs ${tag.color} py-1 px-2 mb-2`}>
@@ -73,7 +96,8 @@ PROJECTS.map(({image, title, description, tags}) => (
                 </li>
             ))}
         </ul>
-        <img class="rounded shadow-2xl shadow-white/10 mb-12" src={image} alt={`Captura de pantalla del proyecto ${image}`} />
+        <img class="rounded shadow-2xl shadow-white/10" src={image} alt={`Captura de pantalla del proyecto ${image}`} />
     </article>
 ))
 }
+</div>
